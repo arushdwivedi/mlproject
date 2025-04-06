@@ -78,7 +78,10 @@ class DataTransformation:
             input_feature_train_arr=preprocessing_obj.fit_transform(input_feature_train_df)
             input_feature_test_arr=preprocessing_obj.transform(input_feature_test_df)
 
-
+            logging.info(f"Train input features shape: {input_feature_train_arr.shape}")
+            logging.info(f"Train target shape: {target_feature_train_df.shape}")
+            logging.info(f"Test input features shape: {input_feature_test_arr.shape}")
+            logging.info(f"Test target shape: {target_feature_test_df.shape}")
             train_arr=np.c_[
                 input_feature_train_arr,np.array(target_feature_train_df)
             ]
