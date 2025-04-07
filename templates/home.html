@@ -1,21 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <title>Student Exam Performance Indicator</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <style>
+        body {
+            background-color: #121212;
+            color: #ffffff;
+        }
+
+        .card {
+            background-color: #1e1e1e;
+            border: none;
+        }
+
+        h1, h2, legend, label {
+            color: #ffffff;
+        }
+
+        .form-control,
+        .form-select {
+            background-color: #2c2c2c;
+            color: #ffffff;
+            border: 1px solid #444;
+        }
+
+        .form-control::placeholder {
+            color: #aaa;
+        }
+
+        .form-control:focus,
+        .form-select:focus {
+            background-color: #2c2c2c;
+            color: #ffffff;
+            border-color: #007bff;
+            box-shadow: none;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            border: none;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+    </style>
 </head>
-<body class="bg-light">
+<body>
     <div class="container mt-5">
-        <div class="card shadow p-4">
-            <h1 class="text-center mb-4">Student Exam Performance Indicator</h1>
+        <div class="card shadow p-4 rounded-4">
+            <h1 class="text-center mb-4">🎓 Student Exam Performance Indicator</h1>
             <form action="{{ url_for('predict_datapoint') }}" method="post">
                 <fieldset>
-                    <legend class="mb-4">Student Exam Performance Prediction</legend>
+                    <legend class="mb-4 fs-4 text-center">📊 Performance Prediction Form</legend>
 
                     <div class="mb-3">
                         <label class="form-label">Gender</label>
-                        <select class="form-control" name="gender" required>
+                        <select class="form-select" name="gender" required>
                             <option selected disabled value="">Select your Gender</option>
                             <option value="male">Male</option>
                             <option value="female">Female</option>
@@ -24,7 +67,7 @@
 
                     <div class="mb-3">
                         <label class="form-label">Race or Ethnicity</label>
-                        <select class="form-control" name="ethnicity" required>
+                        <select class="form-select" name="ethnicity" required>
                             <option selected disabled value="">Select Ethnicity</option>
                             <option value="group A">Group A</option>
                             <option value="group B">Group B</option>
@@ -36,7 +79,7 @@
 
                     <div class="mb-3">
                         <label class="form-label">Parental Level of Education</label>
-                        <select class="form-control" name="parental_level_of_education" required>
+                        <select class="form-select" name="parental_level_of_education" required>
                             <option selected disabled value="">Select Parent Education</option>
                             <option value="associate's degree">Associate's Degree</option>
                             <option value="bachelor's degree">Bachelor's Degree</option>
@@ -49,7 +92,7 @@
 
                     <div class="mb-3">
                         <label class="form-label">Lunch Type</label>
-                        <select class="form-control" name="lunch" required>
+                        <select class="form-select" name="lunch" required>
                             <option selected disabled value="">Select Lunch Type</option>
                             <option value="free/reduced">Free/Reduced</option>
                             <option value="standard">Standard</option>
@@ -58,7 +101,7 @@
 
                     <div class="mb-3">
                         <label class="form-label">Test Preparation Course</label>
-                        <select class="form-control" name="test_preparation_course" required>
+                        <select class="form-select" name="test_preparation_course" required>
                             <option selected disabled value="">Select Test Course</option>
                             <option value="none">None</option>
                             <option value="completed">Completed</option>
@@ -67,22 +110,38 @@
 
                     <div class="mb-3">
                         <label class="form-label">Reading Score (out of 100)</label>
-                        <input class="form-control" type="number" name="reading_score" placeholder="Enter your Reading Score" min="0" max="100" required>
+                        <input
+                            class="form-control"
+                            type="number"
+                            name="reading_score"
+                            placeholder="Enter your Reading Score"
+                            min="0"
+                            max="100"
+                            required
+                        />
                     </div>
 
                     <div class="mb-3">
                         <label class="form-label">Writing Score (out of 100)</label>
-                        <input class="form-control" type="number" name="writing_score" placeholder="Enter your Writing Score" min="0" max="100" required>
+                        <input
+                            class="form-control"
+                            type="number"
+                            name="writing_score"
+                            placeholder="Enter your Writing Score"
+                            min="0"
+                            max="100"
+                            required
+                        />
                     </div>
 
                     <div class="mb-3 text-center">
-                        <input class="btn btn-primary px-4" type="submit" value="Predict your Maths Score">
+                        <input class="btn btn-primary px-4" type="submit" value="🎯 Predict your Maths Score" />
                     </div>
                 </fieldset>
             </form>
 
             {% if results %}
-                <h2 class="mt-4 text-center">The prediction is: <strong>{{ results }}</strong></h2>
+                <h2 class="mt-4 text-center">🧠 Prediction: <strong>{{ results }}</strong></h2>
             {% endif %}
         </div>
     </div>
